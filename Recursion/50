@@ -1,0 +1,20 @@
+Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+
+ class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if(n==0):
+            return 1
+        elif(n<0):
+            return 1/(x*self.myPow(x,-n-1))
+        elif n%2==0:
+            a=self.myPow(x,n//2)
+            return a*a
+        return x*self.myPow(x,n-1)
+
+
+find pow directly caused error .
+
+we are basically doing this:
+
+we find half of n  and then square it we get even power. If we have an odd power than we can multiply the squared no with x
+
