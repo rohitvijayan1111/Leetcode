@@ -1,0 +1,26 @@
+Code Ninja
+You are given a stack/deque of integers 'MY-STACK' and an integer ‘X’. Your task is to insert ‘X’ to the bottom of ‘MY-STACK’ and return the updated stack/deque.
+Note :
+If ‘MY_STACK’ = [7, 1, 4, 5], then the first element represents the element at the bottom of the stack and the last element represents the element at the top of the stack.
+For Example :
+Let ‘MY_STACK’ = [7, 1, 4, 5] and ‘X’ = 9. So, ‘MY_STACK’ after insertion becomes [9, 7, 1, 4, 5].
+
+
+from os import *
+from sys import *
+from collections import *
+from math import *
+def helper(s,x):
+	if(not s):
+		s.append(x)
+		return
+	no=s.pop()
+	helper(s,x)
+	s.append(no)
+def pushAtBottom(myStack: deque, x: int):
+	# Write your code here.
+	helper(myStack,x)
+	return myStack
+
+
+the idealogy here is to pop continously until we reach the end of the stack and then append the no and later add all the poped elements
