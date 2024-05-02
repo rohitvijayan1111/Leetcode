@@ -1,0 +1,35 @@
+Problem statement
+You are given two strings 'A' and 'B' of length 'N' and 'M' respectively.
+Return the string that has more distinct subsequences, if both strings have the same number of distinct subsequences, then return 'A'.
+
+For Example:
+'N' = 2, 'M' = 2, 'A' = "ab", 'B' = "dd".
+
+'A' has distinct subsequences = ["a", "b", "ab"].
+'B' has distinct subsequences = ["d", "dd"].
+So our answer is "ab".
+
+def moreSubsequence(n: int, m: int, a: str, b:str) -> str:
+    # Write your code here.
+    k=0
+    def helper(s,c,n,ss):
+        nonlocal k
+        if(c==n):
+            k=k+1
+            return 
+        helper(s+ss[c],c+1,n,ss)
+        while(c+1<n and ss[c]==ss[c+1]):
+            c=c+1
+        helper(s,c+1,n,ss)
+    
+    (helper("",0,len(a),a))
+    a1=k
+    k=0
+    helper("",0,len(b),b)
+    a2=k
+    if(a1>=a2):
+        return a
+    return b
+
+
+similar approach to subset II 
