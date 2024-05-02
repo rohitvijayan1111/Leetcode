@@ -1,0 +1,31 @@
+Problem statement
+You’re given a stack consisting of 'N' integers. Your task is to sort this stack in descending order using recursion.
+
+We can only use the following functions on this stack S.
+
+is_empty(S) : Tests whether stack is empty or not.
+push(S) : Adds a new element to the stack.
+pop(S) : Removes top element from the stack.
+top(S) : Returns value of the top element. Note that this function does not remove elements from the stack.
+Note :
+1) Use of any loop constructs like while, for..etc is not allowed. 
+2) The stack may contain duplicate integers.
+3) The stack may contain any integer i.e it may either be negative, positive or zero.
+from os import *
+from sys import *
+from collections import *
+from math import *
+def inserting(stack,no):
+    if(not stack or stack[-1]<no):
+        stack.append(no)
+        return
+    n=stack.pop()
+    inserting(stack,no)
+    stack.append(n)
+def sortStack(stack):
+    if(not stack):
+        return
+    no=stack.pop()
+    sortStack(stack)
+    inserting(stack,no)
+The approach is similar to reversing a list, we pop the elements of the stack until empty and then we add them to stack by inserting them at the correct position(descending order)
