@@ -1,0 +1,36 @@
+Given an integer array nums that may contain duplicates, return all possible 
+subsets
+ (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order. 
+
+Example 1:
+
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res=[]
+        nums.sort() 
+        def helper(l,c):
+            if(c==len(nums)):
+                res.append(l)
+                return
+            
+            helper(l+[nums[c]],c+1)
+            while c+1<len(nums) and nums[c]==nums[c+1]:
+                c=c+1
+            helper(l,c+1)
+        helper([],0)
+        return res
+
+
+Recursion Logic:
+Inside the helper function, for each element in nums, there are two recursive calls:
+Including the current element in the subset (helper(l+[nums[c]], c+1)).
+Skipping the repeating occurrences of the current element and moving to the next unique element (while c+1<len(nums) and nums[c]==nums[c+1]: c=c+1).
+This ensures that for a repeating element, only the first occurrence is considered in one branch of the recursion, while all the other occurrences are skipped until a unique element is encountered.
+Ensuring Exclusion of Duplicate Elements:
+After including the current element in the subset and advancing the index (c) to the next position, the function checks if there are repeating occurrences of the current element.
+If there are repeating occurrences, it skips them by incrementing c until a unique element is encountered.
