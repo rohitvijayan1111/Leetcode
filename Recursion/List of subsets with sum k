@@ -1,0 +1,17 @@
+from copy import deepcopy;
+def subarraysWithSumK( a:[list], k:int) ->[[int]]:
+    # Write your code here
+    l=[]
+    a.sort()
+    def helper(n,c,s):
+        if(s==k):
+            l.append(n)
+            return
+        if(c==len(a)):
+            return
+        helper(n+[a[c]],c+1,s+a[c])
+        while(c+1<len(a) and a[c]==a[c+1]):
+            c=c+1
+        helper(n,c+1,s)
+    helper([],0,0)
+    return l
