@@ -1,0 +1,40 @@
+You are given the head of a non-empty linked list representing a non-negative integer without leading zeroes.
+Return the head of the linked list after doubling it.
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow=head
+        fast=head.next
+        while(slow):
+            if(not fast):
+                n=0
+            else:
+                n=fast.val*2
+            if(slow!=head):
+                slow.val=((slow.val*2)+(n//10))%10
+            else:
+                ans=((slow.val*2)+(n//10))
+                if(ans//10==1):
+                    print("IN")
+                    slow.val=ans%10
+                    n=ListNode(1)
+                    n.next=head
+                    head=n
+                else:
+                    slow.val=ans%10
+                    
+            slow=slow.next
+            if(fast):
+                fast=fast.next
+        if(slow):
+            slow.val=(slow.val*2)%10
+        return head
+
+
+The concept is very simple,just have two pointer fast and slow . multiply 2 with the fast pointer and check if it has any carry if so add the carry to the slow pointer .
+Like this iterate over the linked list
