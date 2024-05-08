@@ -1,0 +1,21 @@
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        l=[]
+        def helper(m,s,c):
+            if(s==target):
+                l.append(m)
+                return 
+            elif(s>target):
+                return
+            if(c>=len(candidates)):
+                return
+            helper(m+[candidates[c]],s+candidates[c],c+1)
+            while(c+1<len(candidates) and candidates[c]==candidates[c+1]):
+                c=c+1
+            helper(m,s,c+1)
+        helper([],0,0)
+        return l
+        
+
+same as subset II
