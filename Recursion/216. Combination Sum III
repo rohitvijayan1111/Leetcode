@@ -1,0 +1,17 @@
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        nos=[i for i in range(1,10)]
+        a=[]
+        def helper(m,s,c,l):
+            if(l==k and s==n):
+                a.append(m)
+                return
+            elif(s>n or l>k):
+                return
+            if(c==len(nos)):
+                return
+            helper(m+[nos[c]],s+nos[c],c+1,l+1)
+            helper(m,s,c+1,l)
+        helper([],0,0,0)
+        return a
+        
