@@ -1,0 +1,33 @@
+Given a string s, partition s such that every 
+substring
+ of the partition is a 
+palindrome
+. Return all possible palindrome partitioning of s.
+
+ 
+
+Example 1:
+
+Input: s = "aab"
+Output: [["a","a","b"],["aa","b"]]
+Example 2:
+
+Input: s = "a"
+Output: [["a"]]
+
+
+class Solution:
+    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+        happiness.sort()
+        s=0
+        p=len(happiness)-1
+        for i in range(k):
+            #print(happiness)
+            if(i==0):
+                s=s+happiness[p]
+            else:
+                s=s+max(happiness[p]-i,0)
+            p=p-1    
+        return s
+The concept is very simple, i initially tried the brute force approach by subtraction 1 from all the values . 
+So what i do, here is to subtract k from each highest value in each iterations
