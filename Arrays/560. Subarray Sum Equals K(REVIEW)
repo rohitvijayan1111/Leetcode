@@ -1,0 +1,12 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        d={0:1}
+        res=0
+        s=0
+        for i in range(len(nums)):
+            s=s+nums[i]
+            diff=s-k
+            res+=d.get(diff,0)
+            d[s]=d.get(s,0)+1
+        print(d)
+        return res
