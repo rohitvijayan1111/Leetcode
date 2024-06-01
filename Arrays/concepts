@@ -1,2 +1,4 @@
 1)two pointer
 2)quick sort kinda partition with two pointer one for 0 and another for 1
+3)largest subarray with sum k-prefix sum with hashmap(sum,index)
+4)no of subarray with sum k - prefix sum with hashmap(sum,count)
