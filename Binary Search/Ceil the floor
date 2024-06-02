@@ -1,0 +1,42 @@
+#User function Template for python3
+
+
+
+
+def getFloorAndCeil(arr, n, x):
+    # code here
+    ans1=-1
+    ans2=-1
+    l=0
+    r=n-1
+    arr.sort()
+    while(l<=r):
+        m=(l+r)//2
+        if(arr[m]==x):
+            return [arr[m],arr[m]]
+        elif(arr[m]<x):
+            ans1=arr[m]
+            l=m+1
+        else:
+            ans2=arr[m]
+            r=m-1
+    return [ans1,ans2]
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+
+
+if __name__ == '__main__':
+    tc = int(input())
+    while tc > 0:
+        n, x = list(map(int, input().strip().split()))
+        arr = list(map(int, input().strip().split()))
+
+        ans = getFloorAndCeil(arr, n, x)
+        print(str(ans[0]) + " " + str(ans[1]))
+        tc -= 1
+
+# } Driver Code Ends
