@@ -1,0 +1,15 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        i=0
+        j=1
+        nums2=[0]*len(nums)
+        for k in nums:
+            if k<0:
+                nums2[j]=k
+                j+=2
+            else:
+                nums2[i]=k
+                i+=2
+        return nums2
+
+i tried the partitioning alogirthm but it wasnt stable (it took more than n time complexity like n^2) so used extra space to solve it just by using another array
