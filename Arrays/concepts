@@ -3,3 +3,4 @@
 3)largest subarray with sum k-prefix sum with hashmap(sum,index)
 4)no of subarray with sum k - prefix sum with hashmap(sum,count)
 5)kadane algorithm - for finding maximum sum
+6)sliding window
