@@ -1,0 +1,38 @@
+class Solution:
+    def findpiv(self, nums):
+        l=0
+        r=len(nums)-1
+        while(l<=r):
+            m=l+(r-l)//2
+            if(m<r and nums[m]>nums[m+1]):
+                return m
+            elif(m>l and nums[m]<nums[m-1]):
+                return m-1
+            elif(nums[m]<=nums[l]):
+                r=m-1
+            else:
+                l=m+1
+        return -1
+    def binarysearch(self,nums,target,l,r):
+        while(l<=r):
+            m=l+(r-l)//2
+            if(target==nums[m]):
+                return m
+            elif(target>nums[m]):
+                l=m+1
+            else:
+                r=m-1
+        return -1
+    def search(self, nums: List[int], target: int) -> int:
+        p=self.findpiv(nums)
+        print(p)
+        if(p==-1):
+            return self.binarysearch(nums,target,0,len(nums)-1)
+        if(nums[p]==target):
+            return p
+        if(target>=nums[0]):
+            return self.binarysearch(nums,target,0,p-1)
+        else:
+            return self.binarysearch(nums,target,p+1,len(nums)-1)
+
+        
