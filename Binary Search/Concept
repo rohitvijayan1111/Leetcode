@@ -25,3 +25,11 @@ there is a catch in rotated sorted array what if the left ,mid and right have th
 direction to go right So we increment the left pointer by 1 and decrement the right pointer by 1
 so that the mid get recalculated and hopeful they are all not same
 --------------------------------------------------------------------------------------------------------------
+5)HOW TO FIND THE PIVOT IN A ROTATED SORTED ARRAY
+the idea is to use the concept of binary search, in binary search returning revolves around returing the mid
+element if its equal right 
+similarly here we check the following
+i)if mid element is the pivot
+ii)if mid-1 element is the pivot
+iii)we check which half is sorted by comparing it with the start and then we reduce the frame of comparision
+accordingly to the unsorted half
