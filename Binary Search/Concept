@@ -33,3 +33,11 @@ i)if mid element is the pivot
 ii)if mid-1 element is the pivot
 iii)we check which half is sorted by comparing it with the start and then we reduce the frame of comparision
 accordingly to the unsorted half
+----------------------------------------------------------------------------------------------------------
+6)Binary search could also be used for non sorted list. the idealogy of it it simple to reduce the search space
+and in o(logn) time
+-------------------------------------------------------------------------------------------------------------
+7)binary search can be used to find a square root of a number
+take the l=0 and r=the number itself check if(m^2<=no) if so then it could be a potential ans save it and increment the l=m+1
+else reduce r=m-1
+--------------------------------------------------------------------------------------------------------------
