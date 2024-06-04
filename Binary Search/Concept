@@ -41,3 +41,6 @@ and in o(logn) time
 take the l=0 and r=the number itself check if(m^2<=no) if so then it could be a potential ans save it and increment the l=m+1
 else reduce r=m-1
 --------------------------------------------------------------------------------------------------------------
+NOTE:BINARY SEARCH CAN ALSO BE USED ON ANSWERS LIKE IF WE WANT TO FIND THE MINIMUM NO (ANS) AND WE GIVEN AN CONDITION 
+EXAMPLE LEETCODE 875 OR THE ABOVE ONE
+==
