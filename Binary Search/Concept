@@ -4,8 +4,24 @@ Most of the question use the extensed version of simple binary search problem
 for floor-> in the condition a[m]<x it could be a possible answer right so store it that it just return it
 for ceil->same
 similarly for insert a number at the correct index
-
+----------------------------------------------------------------------------------------------------------
 2)for finding the first and last position of a number in a sorted array
 the concept is simple just do a simple binary search , if we want to find the starting index then in the condition if it equal to m
 there just maintain an answer varaible of the position and decrement the right pointer to find the possible starting index
 similar concept for ending also
+-------------------------------------------------------------------------------------------------------------
+3)SEARCH IN ROTATED SORTED ARRAY(DISTINCT)
+since the array is sorted we can use the concept of binary search but there is a catch right the array is rotated.
+so the steps are:
+i)check if the search element is in the mid
+ii)check if the mid element is greater than the start element (this way we can confirm that the left array is sorted) so
+in the left array check if the element lies in the range of the left array if so decrement the right pointer to m-1
+else increment the left pointer to r-1
+iii)if the array is sorted in left half then it is in right half right
+similarly check if it lies in that range and accordingly increment or decrement the left and right pointer accordingly
+------------------------------------------------------------------------------------------------------------
+4)SEARCH IN ROTATED SORTED ARRAY(REPEATED)
+there is a catch in rotated sorted array what if the left ,mid and right have the same element we cant decide which 
+direction to go right So we increment the left pointer by 1 and decrement the right pointer by 1
+so that the mid get recalculated and hopeful they are all not same
+--------------------------------------------------------------------------------------------------------------
