@@ -1,0 +1,24 @@
+class Solution:
+    def checker(self,piles,h,m):
+        z=0
+        for i in piles:
+            z=z+math.ceil(i/m)
+        if(z<=h):
+            return True
+        else:
+            return False
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        l=1
+        r=max(piles)
+        ans=0
+        while(l<=r):
+            m=l+(r-l)//2
+            print(m,end=" ")            
+            if(self.checker(piles,h,m)):
+                print("INL")
+                ans=m
+                r=m-1
+            else:
+                print("INR")
+                l=m+1
+        return ans
