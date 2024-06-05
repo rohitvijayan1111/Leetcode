@@ -11,3 +11,8 @@ class Solution:
             else:
                 r=m-1
         return l+k
+
+#HOW L+K 
+USUALLY WE RETURN arr[high]+miss
+missing=arr[high]-high-1
+
