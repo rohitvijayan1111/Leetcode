@@ -1,3 +1,4 @@
 FOR A PROBLEM WHERE WE ARE A GIVEN A RANDOM NODE TO DELETE WITHOUT THE HEAD NODE
 SOL:THE ONLY OPTION IS TO COPY THE NEXT NODE DATA TO THE CURRENT NODE AND CHANGE THE NEXT POINTER TO NEXT.NEXT
 ------------------------------------------------------------------------------------------------------------------
+1)Tortoise and hare method
