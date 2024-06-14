@@ -2,6 +2,8 @@ FOR A PROBLEM WHERE WE ARE A GIVEN A RANDOM NODE TO DELETE WITHOUT THE HEAD NODE
 SOL:THE ONLY OPTION IS TO COPY THE NEXT NODE DATA TO THE CURRENT NODE AND CHANGE THE NEXT POINTER TO NEXT.NEXT
 ------------------------------------------------------------------------------------------------------------------
 1)Tortoise and hare method
+    i)SLOW BY ONE STEP AND FAST BY TWO STEPS
+    ii)we can initially move the fast pointer to a certain distance and then move the slow and the fast pointer by 1
 2)142. Linked List Cycle II- in this once we detect the cycle it does not mean that it is the start node of the loop
 so what you have to do is :
 use an another pointer from head and move it one step and also move the slow pointer utimately both will meet that 
