@@ -7,3 +7,8 @@ so what you have to do is :
 use an another pointer from head and move it one step and also move the slow pointer utimately both will meet that 
 is the starting point of the loop
 ===============================================================================================================
+3)328. Odd Even Linked List
+here we had been asked to create a linkedlist where first half of the index have odd index and second half has even indexes
+so i tried if we can reach the middle element and make the first half odd index and second half even indexes. BUt for odd and even length 
+it didnt have any logic.
+so THe solution was to maintain a new linkedlist for odd and even and later join (THE NODES ARE THE OLD ONES so i think thay way it dint have extra memory)
