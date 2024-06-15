@@ -14,3 +14,6 @@ here we had been asked to create a linkedlist where first half of the index have
 so i tried if we can reach the middle element and make the first half odd index and second half even indexes. BUt for odd and even length 
 it didnt have any logic.
 so THe solution was to maintain a new linkedlist for odd and even and later join (THE NODES ARE THE OLD ONES so i think thay way it dint have extra memory)
+----------------------------------------------------------------------------------------------------------
+4)suppose u want to access the end of the linked list for example in adding 1 to a linked list and i am asked 
+to provide a solution without reversing the no . The best option is to use recursion (AS IT HAS BACKTRACKING)
