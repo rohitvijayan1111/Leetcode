@@ -1,0 +1,33 @@
+#User function Template for python3
+
+from typing import List
+
+class Solution:
+    def insertatbottom(self,st,data):
+        if(not st):
+            st.append(data)
+            return
+        tmp=st.pop()
+        self.insertatbottom(st,data)
+        st.append(tmp)
+    def reverse(self,st): 
+        #code here
+        if(not st):
+            return
+        temp=st.pop()
+        self.reverse(st)
+        self.insertatbottom(st,temp)
+        return st
+#{ 
+ # Driver Code Starts
+
+#Initial Template for Python 3
+
+ 
+for _ in range(int(input())):
+    N = int(input())
+    St = list(map(int, input().split()))
+    ob = Solution()
+    ob.reverse(St)
+    print(*St)
+# } Driver Code Ends
