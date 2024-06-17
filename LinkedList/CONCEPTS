@@ -19,3 +19,7 @@ so THe solution was to maintain a new linkedlist for odd and even and later join
 to provide a solution without reversing the no . The best option is to use recursion (AS IT HAS BACKTRACKING)
 ------------------------------------------------------------------------------------------------------------------
 5)A sliding window can also be used for sums like Find pairs with given sum in doubly linked list
+---------------------------------------------------------------------------------------------------------------
+6)Clone Linked List with Random and Next Pointer
+- a new node can be inserted in between the old ll and then change the pointer and then make pointers correct and then
+remove the new pointer and form a ll
