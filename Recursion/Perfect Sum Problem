@@ -1,0 +1,33 @@
+#User function Template for python3
+class Solution:
+	def perfectSum(self, arr, n, sum):
+		# code here
+		arr.sort()
+		self.counter=0
+        def helper(s,c):
+            if(s==sum):
+                #global counter
+                self.counter+=1
+                return
+            elif(s>sum or c>=n):
+                return
+            helper(s+arr[c],c+1)
+            helper(s,c+1)
+        helper(0,0)
+        return self.counter
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+	T=int(input())
+	for i in range(T):
+		n,sum = input().split()
+		n,sum = int(n),int(sum)
+		arr = [int(x) for x in input().split()]
+		ob = Solution()
+		ans = ob.perfectSum(arr,n,sum)
+		print(ans)
+
+# } Driver Code Ends
