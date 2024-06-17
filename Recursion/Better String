@@ -1,0 +1,41 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def betterString(self, str1, str2):
+        # Code here
+        def countDistinctSubsequences(s):
+            res=[]
+            n = len(s)
+            def helper(l,c):
+                if(c==n):
+                    res.append("".join(l))
+                    return
+                helper(l+[s[c]],c+1)
+                while(c+1<n and s[c]==s[c+1]):
+                    c+=1
+                helper(l,c+1)
+            helper([],0)
+            return len(res)
+        c1=countDistinctSubsequences(sorted(str1))
+        c2=countDistinctSubsequences(sorted(str2))
+        if(c1>=c2):
+            return str1
+        else:
+            return str2
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        str1 = input()
+        str2 = input()
+        ob = Solution()
+        res = ob.betterString(str1, str2)
+        print(res)
+# } Driver Code Ends
