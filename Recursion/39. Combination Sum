@@ -43,3 +43,24 @@ present so what we do is we dont increase the counter if we chose to include it 
 The mistake i made was i called three recursion including current ,including next and not including current
 
 including next is not needed at all as in the next recursion that would be handled.
+
+
+
+
+
+EASIER SOL:
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res=[]
+        def helper(arr,c,total):
+            if(total==target):
+                res.append(arr.copy())
+                return
+            if(total>target or c>=len(candidates)):
+                return
+            arr.append(candidates[c])
+            helper(arr,c,total+candidates[c])
+            arr.pop()
+            helper(arr,c+1,total)
+        helper([],0,0)
+        return res
