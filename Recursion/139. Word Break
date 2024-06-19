@@ -1,0 +1,22 @@
+## This problem needs DP
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n=len(s)
+        self.f=0
+        def helper(c):
+            if(c>=len(s)):
+                #print("IN")
+                self.f=1
+                return
+            for j in wordDict:
+                if(s[c:c+len(j)]==j):
+                    #print(s[c:j+1],j+1)
+                    helper(c+len(j))
+        helper(0)
+        #print(self.f)
+        if(self.f):
+            return True
+        return False
+
+###Not all test case have passed
