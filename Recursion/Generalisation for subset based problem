@@ -1,1 +1,12 @@
 we definitely need a part of this including a part and not including a part so we use backttracking and do it
+
+CHECK OUT HOW THE INSERTING IN A SUDOKO IS VALID:
+ def isvalid(no,i,j):
+            for n in range(9):
+                if(board[i][n]==no):
+                    return False
+                if(board[n][j]==no):
+                    return False
+                if(board[3*(i//3)+n//3][3*(j//3)+n%3]==no):
+                    return False
+            return True
