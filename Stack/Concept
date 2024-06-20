@@ -1,2 +1,34 @@
 1)155. Min Stack
 =i was asked to fetch the min element in o(1) time. so came to know create a stack that keeps track of the min element at that position
+
+INFIX TO POSTFIX:
+1)Certainly! Here is a consolidated set of rules for converting an infix expression to a postfix expression using the Shunting Yard algorithm:
+
+Rules for Infix to Postfix Conversion
+Operands: Directly append operands (e.g., alphanumeric characters) to the postfix expression.
+
+Operators: Use a stack to hold operators and ensure they are added to the postfix expression in the correct order:
+
+If the stack is empty or contains a left parenthesis on top, push the incoming operator onto the stack.
+If the incoming operator has higher precedence than the operator on the stack top, push it onto the stack.
+If the incoming operator has lower or equal precedence, pop operators from the stack and append them to the postfix expression until this is not true, then push the incoming operator onto the stack.
+Parentheses:
+
+Push a left parenthesis ( onto the stack.
+When a right parenthesis ) is encountered, pop from the stack and append to the postfix expression until a left parenthesis ( is at the top of the stack. Pop and discard the left parenthesis (.
+End of Expression: After reading the entire infix expression, pop any remaining operators in the stack and append them to the postfix expression.
+
+
+PREFIX TO INFIX:
+Rules for Prefix to Infix Conversion
+Reverse the Prefix Expression: Start by reversing the prefix expression to process it from right to left.
+
+Use a Stack: Use a stack to store intermediate results.
+
+Operands: When you encounter an operand (variable or number), push it onto the stack.
+
+Operators: When you encounter an operator, pop two elements from the stack. Combine them with the operator in infix order and enclose them in parentheses. Push the resulting string back onto the stack.
+
+Final Result: After processing all the characters, the stack will contain the final infix expression.
+
+----------
