@@ -1,0 +1,2 @@
+1)155. Min Stack
+=i was asked to fetch the min element in o(1) time. so came to know create a stack that keeps track of the min element at that position
