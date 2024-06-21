@@ -32,3 +32,18 @@ Operators: When you encounter an operator, pop two elements from the stack. Comb
 Final Result: After processing all the characters, the stack will contain the final infix expression.
 
 ----------
+Prefix to Postfix Conversion Rules
+Reverse the Prefix Expression:
+
+Start by reversing the prefix expression. This helps in processing the operators and operands in the correct order for postfix conversion.
+Use a Stack:
+
+Use a stack to help with the conversion process.
+Process Each Character:
+
+Traverse each character of the reversed prefix expression.
+If the character is an operand (like A, B, C, etc.), push it onto the stack.
+If the character is an operator (like +, -, *, /), pop the top two elements from the stack. Concatenate these two elements with the operator at the end, and push the resulting string back onto the stack.
+Final Postfix Expression:
+
+At the end of the traversal, the stack will contain one element, which is the required postfix expression. Pop this element to get the final postfix expression.
