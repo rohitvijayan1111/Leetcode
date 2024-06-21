@@ -64,3 +64,16 @@ Operator: If the character is an operator (like +, -, *, /), pop the top two ele
 Final Postfix Expression:
 
 At the end of the traversal, the stack will contain one element, which is the required postfix expression. Pop this element to get the final postfix expression.
+
+Postfix to Infix Conversion Rules
+Use a Stack:
+
+Use a stack to help with the conversion process.
+Process Each Character:
+
+Traverse each character of the postfix expression:
+Operand: If the character is an operand (like A, B, C, etc.), push it onto the stack.
+Operator: If the character is an operator (like +, -, *, /), pop the top two elements from the stack. Enclose them in parentheses with the operator in between, and push the resulting string back onto the stack.
+Final Infix Expression:
+
+At the end of the traversal, the stack will contain one element, which is the required infix expression. Pop this element to get the final infix expression.
