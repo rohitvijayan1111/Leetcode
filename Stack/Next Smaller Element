@@ -1,0 +1,10 @@
+def nextSmallerElement(arr,n):
+    # Write your code here
+    s=[]
+    res=[-1]*n
+    for i in range(n):
+        while(s and arr[s[-1]]>arr[i]):
+            res[s[-1]]=arr[i]
+            s.pop()
+        s.append(i)
+    return res            
