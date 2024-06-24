@@ -1,0 +1,5 @@
+1)930. Binary Subarrays With Sum
+In this sliding window problem we need to count the no of subarray with sum k
+=i tried a normal sliding window with sum k and it missed windows within the range of the current window
+
+so soln: sum<=k- sum<=k-1
