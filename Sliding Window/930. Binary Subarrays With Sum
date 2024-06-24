@@ -1,0 +1,17 @@
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        def helper(go):
+            if(go<0):
+                return 0
+            l=0
+            c=0
+            s=0
+            for r in range(len(nums)):
+                s+=nums[r]
+                while(s>go):
+                    s-=nums[l]
+                    l+=1
+                print(l,r)
+                c+=(r-l)+1
+            return c
+        return helper(goal)-helper(goal-1)
