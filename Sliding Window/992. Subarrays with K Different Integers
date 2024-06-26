@@ -1,0 +1,38 @@
+class Solution:
+    def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
+        lfar=0
+        lnear=0
+        d=defaultdict(int)
+        c=0
+        for r in range(len(nums)):
+            d[nums[r]]+=1
+            while(len(d)>k):
+                d[nums[lnear]]-=1
+                if(d[nums[lnear]]==0):
+                    del d[nums[lnear]]
+                lnear+=1
+                lfar=lnear
+            while(d[nums[lnear]]>1):
+                d[nums[lnear]]-=1
+                lnear+=1
+            if(len(d)==k):
+                c+=(lnear-lfar+1)
+        return c
+        """
+        def helper(goal):
+            lnear=0
+            c=0
+            d={}
+            for r in range(len(nums)):
+                d[nums[r]]=d.get(nums[r],0)+1
+                while(len(d)>goal):
+                    print(d)
+                    d[nums[lnear]]-=1
+                    if(d[nums[lnear]]==0):
+                        del d[nums[lnear]]
+                    lnear+=1
+                c+=(r-lnear+1)
+            return c
+        return helper(k)-helper(k-1)
+"""
+        
