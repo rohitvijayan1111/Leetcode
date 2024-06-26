@@ -1,0 +1,10 @@
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        l=0
+        c=0
+        counts=[-1,-1,-1]
+        for r in range(len(s)):
+            counts[ord(s[r])-ord('a')]=r
+            if(counts[0]!=-1 and counts[1]!=-1 and counts[2]!=-1):
+                c+=(min(counts)+1)
+        return c
