@@ -1,0 +1,51 @@
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        if t=="":return ""
+        tdict={}
+        sdict={}
+        for i in t:
+            tdict[i]=tdict.get(i,0)+1
+        l=0
+        res,reslen=[-1,-1],float("infinity")
+        have,need=0,len(tdict)
+        for r in range(len(s)):
+            c=s[r]
+            sdict[c]=sdict.get(c,0)+1
+            if(c in tdict):
+                if(sdict[c]==tdict[c]):
+                    have+=1
+            while(have==need):
+                if(r-l+1<reslen):
+                    reslen=r-l+1
+                    res=[l,r]
+                sdict[s[l]]-=1
+                if(s[l] in tdict and sdict[s[l]]<tdict[s[l]]):
+                    have-=1
+                l+=1
+        l,r=res
+        return s[l:r+1] if reslen!=float("infinity") else ""
+                 
+                    
+        """
+        if(len(t)>len(s)):
+            return ""
+        d={}
+        res=s
+        l=0
+        for i in t:
+            d[i]=-1
+        for r in range(len(s)):
+            if(s[r] in d):
+                d[s[r]]=r
+            #print(d)
+            if(min(d.values())!=-1):
+                mini=min(d.values())
+                maxi=max(d.values())
+                if(maxi-mini<len(res)):
+                    res=s[mini:maxi+1]
+        if(res==s and s!=t):
+            return ""
+        return res
+        """                
+
+
