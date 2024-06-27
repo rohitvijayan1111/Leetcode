@@ -1,0 +1,42 @@
+from sys import *
+from collections import *
+from math import *
+
+# Following is the Binary Tree node structure:
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def preorder(root, ans):
+    if not root:
+        return
+    ans.append(root.data)
+    preorder(root.left, ans)
+    preorder(root.right, ans)
+
+def postorder(root, ans):
+    if not root:
+        return
+    postorder(root.left, ans)
+    postorder(root.right, ans)
+    ans.append(root.data)
+
+def inorder(root, ans):
+    if not root:
+        return
+    inorder(root.left, ans)
+    ans.append(root.data)
+    inorder(root.right, ans)
+
+def getTreeTraversal(root):
+    preorder_ans = []
+    inorder_ans = []
+    postorder_ans = []
+    
+    preorder(root, preorder_ans)
+    inorder(root, inorder_ans)
+    postorder(root, postorder_ans)
+    
+    return [inorder_ans, preorder_ans, postorder_ans]
