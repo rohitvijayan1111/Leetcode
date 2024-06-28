@@ -1,0 +1,6 @@
+TEMPLATE FOR DFS:
+
+if(not root):
+  return
+
+DS(left),dfs(right)
