@@ -1,0 +1,8 @@
+1)DEFAULT DICT:
+from collections import defaultdict
+
+2)DEQUE:
+from collections import deque
+
+3)
+from sortedcontainers import SortedList
