@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        d=defaultdict(list)
+        ms=1
+        q=deque([[root,1]])
+        while q:
+            n=len(q)
+            l1,l2=-1,-1
+            for i in range(n):
+                node,no=q.popleft()
+                if(i==0):
+                    l1=no
+                elif(i==n-1):
+                    l2=no
+                if(node.left):
+                    q.append([node.left,2*no])
+                if(node.right):
+                    q.append([node.right,2*no+1])
+            ms=max(ms,l2-l1+1)
+        return ms
