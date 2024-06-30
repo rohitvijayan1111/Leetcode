@@ -16,3 +16,6 @@ DS(left),dfs(right)
 THE QUEUE
 
 What i learned: When you have to traverse back use a map to store the parent node
+
+
+problems where we travel with equal speed in all possible direction its BFS
