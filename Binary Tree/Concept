@@ -19,3 +19,6 @@ What i learned: When you have to traverse back use a map to store the parent nod
 
 
 problems where we travel with equal speed in all possible direction its BFS
+
+
+count of a binary tree (2^n)-1
