@@ -22,3 +22,9 @@ problems where we travel with equal speed in all possible direction its BFS
 
 
 count of a binary tree (2^n)-1
+
+
+> you have a perfect binary tree, then given only the PREORDER and POSTORDER, you can construct your unique binary tree
+>CREATING AN UNIQUE BINARY TREE:
+1)INORDER IS MUST(need to know what is given)+ preorder/postorder
+
