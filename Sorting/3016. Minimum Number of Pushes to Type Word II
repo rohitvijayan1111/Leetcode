@@ -17,6 +17,39 @@ class Solution:
             start=start+1
         return c
 
+-------
+class Solution {
+    public int minimumPushes(String word) {
+        HashMap<Character,Integer> hm=new HashMap<>();
+        List<Character> l=new ArrayList<>();
+        for(char ch:word.toCharArray())
+        {
+            if(hm.containsKey(ch))
+            {
+                hm.put(ch,hm.get(ch)+1);
+            }
+            else
+            {
+                hm.put(ch,1);
+                l.add(ch);
+            }
+        }
+        Collections.sort(l,(a,b)-> {
+         return -1*Integer.compare(hm.get(a),hm.get(b));
+        });
+        int index=2;
+        int ans=0;
+        int arr[]=new int[10];
+        for(char ch:l)
+        {
+            if(index==10) index=2;
 
+            arr[index]++;
+            ans+=hm.get(ch)*arr[index];
+            index++;
+        }
+        return ans;
+    }
+}
 -------
 EFFICIENT?
