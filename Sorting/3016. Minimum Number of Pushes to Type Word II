@@ -1,0 +1,22 @@
+class Solution:
+    def minimumPushes(self, word: str) -> int:
+        d={}
+        for i in word:
+            d[i]=d.get(i,0)+1
+        
+        print(d.items())
+        sorteditem=(sorted(d.items(),key=lambda item:item[1],reverse=True))
+        c=0
+        l=[0]*10
+        start=2
+        for item in sorteditem:
+            if(start==10):
+                start=2
+            l[start]=l[start]+1
+            c+=l[start]*item[1]
+            start=start+1
+        return c
+
+
+-------
+EFFICIENT?
