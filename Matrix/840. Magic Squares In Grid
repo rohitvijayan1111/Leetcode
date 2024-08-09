@@ -1,0 +1,37 @@
+class Solution:
+    def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+        def isMagic(row,col):
+            numbers=set()
+            for i in range(3):
+                for j in range(3):
+                    val = grid[row + i][col + j]
+                    
+                    # Check if value is out of the valid range
+                    if val < 1 or val > 9:
+                        return False
+                    
+                    # Check for uniqueness
+                    if val in numbers:
+                        return False
+                    
+                    numbers.add(val)
+            if len(numbers) != 9:
+                return False
+
+            row1=grid[row][col]+grid[row][col+1]+grid[row][col+2]
+            row2=grid[row+1][col]+grid[row+1][col+1]+grid[row+1][col+2]
+            row3=grid[row+2][col]+grid[row+2][col+1]+grid[row+2][col+2]
+            col1=grid[row][col]+grid[row+1][col]+grid[row+2][col]
+            col2=grid[row][col+1]+grid[row+1][col+1]+grid[row+2][col+1]
+            col3=grid[row][col+2]+grid[row+1][col+2]+grid[row+2][col+2]
+            diag1=grid[row][col]+grid[row+1][col+1]+grid[row+2][col+2]
+            diag2=grid[row][col+2]+grid[row+1][col+1]+grid[row+2][col]
+            return row1==row2 and row2==row3 and row3==col1 and col1==col2 and col2==col3 and col3==diag1 and diag1==diag2    
+        count=0
+        for i in range(len(grid)-2):
+            for j in range(len(grid[0])-2):
+                if(isMagic(i,j)):
+                    count+=1
+        return count
+
+                        
