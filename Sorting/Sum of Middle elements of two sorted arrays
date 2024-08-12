@@ -1,0 +1,87 @@
+#User function Template for python3
+
+class Solution:
+    def sum_of_middle_elements(self, arr1, arr2):
+        # code here
+        length=len(arr1)+len(arr2)
+        total=(length//2)+1
+        sorted_array=[]
+        c1=0
+        c2=0
+        while(len(sorted_array)!=total and c1<len(arr1) and c2<len(arr2)):
+            if(arr1[c1]<=arr2[c2]):
+                sorted_array.append(arr1[c1])
+                c1+=1
+            else:
+                sorted_array.append(arr2[c2])
+                c2+=1
+        while(len(sorted_array)!=total and c1<len(arr1)):
+            sorted_array.append(arr1[c1])
+            c1+=1
+        while(len(sorted_array)!=total and c2<len(arr2)):
+            sorted_array.append(arr2[c2])
+            c2+=1    
+        return sorted_array[-1]+sorted_array[-2]
+        
+                
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+import sys
+
+input = sys.stdin.read
+
+
+def main():
+    input_lines = input().strip().split("\n")
+    t = int(input_lines[0])
+
+    index = 1
+    results = []
+    while t > 0:
+        arr = list(map(int, input_lines[index].strip().split()))
+        brr = list(map(int, input_lines[index + 1].strip().split()))
+        index += 2
+
+        solution = Solution()
+        res = solution.sum_of_middle_elements(arr, brr)
+        results.append(res)
+
+        t -= 1
+
+    for result in results:
+        print(result)
+
+
+if __name__ == "__main__":
+    main()
+
+# } Driver Code Ends
+
+
+EFFICENT CODE::
+class Solution:
+    def sum_of_middle_elements(self, arr1, arr2):
+        n = len(arr1)
+        m = len(arr2)
+        total_length = n + m
+        
+        # Indices for the middle elements
+        mid1 = (total_length - 1) // 2
+        mid2 = total_length // 2
+        
+        i, j = 0, 0
+        prev, curr = None, None
+        
+        # Iterate until we reach the second middle index
+        for k in range(mid2 + 1):
+            prev = curr
+            if i < n and (j >= m or arr1[i] <= arr2[j]):
+                curr = arr1[i]
+                i += 1
+            else:
+                curr = arr2[j]
+                j += 1
+        
+        return prev + curr
