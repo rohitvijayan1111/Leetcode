@@ -1,0 +1,6 @@
+1)ROOT OF A NO:
+NEWTON RALPHSON METHOD:
+guess=No(sq no)
+while(abs(guess*guess-number)>precision):
+      guess=(guess+(number/guess))/2
+      return guess
