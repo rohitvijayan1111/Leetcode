@@ -5,9 +5,16 @@ iii)Max
 Do find all possbile ways->Recursion->DP
 
 
-Shortcut:
+Shortcut (TOP DOWN):
 1)Try to represent the problem in terms of index
 2)Do all possible stuff on that index according to the problem statement
 3)count all way->Sum up all stuffs
 4)find min->min of all stuffs
 5)find max->max of all stuffs
+
+
+BOTTOM UP :
+
+1)copy the base cases
+2) Change the indexes in the opposite direction
+3)Copy the recurrence
