@@ -1,0 +1,26 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+from typing import *
+
+  
+def frogJump(n: int, heights: List[int]) -> int:
+    dp=[-1]*(n)
+    def findCost(i):
+        if(i==0):
+            return 0
+        if(dp[i]!=-1) :
+            return dp[i]
+        cost1=abs(heights[i]-heights[i-1])+findCost(i-1)
+        cost2=float("inf")
+        if(i>1):
+            cost2=abs(heights[i]-heights[i-2])+findCost(i-2)
+        dp[i]=min(cost1,cost2)
+        return dp[i]
+    
+    findCost(n-1)
+    return dp[-1]
+    # Write your code here.
+    pass
