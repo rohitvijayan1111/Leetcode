@@ -3,3 +3,10 @@
  sorteditem=(sorted(d.items(),key=lambda item:item[1],reverse=True))
 
 JAVA:
+
+
+2)merge sort:
+merging two unsorted array using recursion
+
+3)Couting sort:
+maintaining the count of occurance of that element in that particular index
