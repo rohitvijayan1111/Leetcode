@@ -1,0 +1,45 @@
+Counting Sort-Based Approach
+Time Complexity: 
+𝑂(𝑛+max_element)
+O(n+max_element)
+Space Complexity: 
+𝑂(max_element)
+O(max_element
+
+#User function Template for python3
+
+
+class Solution:
+
+    def kthSmallest(self, arr,k):
+        maxi=max(arr)
+        myarr1=[0]*(maxi+1)
+        for i in arr:
+            myarr1[i]+=1
+        count=0
+        for i in range(len(myarr1)):
+            count+=myarr1[i]
+            if(count>=k):
+                return i
+        
+        
+        
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+#contributed by RavinderSinghPB
+if __name__ == '__main__':
+    import random
+    t = int(input())
+    for tcs in range(t):
+        # n = int(input())
+        arr = list(map(int, input().strip().split()))
+        k = int(input())
+        ob = Solution()
+        print(ob.kthSmallest(arr, k))
+
+# } Driver Code Ends
