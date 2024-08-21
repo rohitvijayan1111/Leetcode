@@ -3,6 +3,13 @@ from collections import defaultdict
 
 2)DEQUE:
 from collections import deque
+append(x): Adds x to the right end of the deque.
+appendleft(x): Adds x to the left end of the deque.
+pop(): Removes and returns an element from the right end.
+popleft(): Removes and returns an element from the left end.
+extend(iterable): Extends the deque by appending elements from an iterable to the right end.
+extendleft(iterable): Extends the deque by appending elements from an iterable to the left end (note: the iterable is processed in reverse order).
+rotate(n): Rotates the deque n steps to the right. If n is negative, it rotates to the left.
 
 3)
 from sortedcontainers import SortedList
