@@ -1,0 +1,17 @@
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m=len(triangle)
+        n=len(triangle[-1])
+        dp=[[-1 for _ in range(n)] for _ in range(m)]
+        def helper(row,col):
+            if(row==m-1):
+                return triangle[row][col]
+            if(dp[row][col]!=-1):
+                return dp[row][col]
+            left=triangle[row][col]+helper(row+1,col)
+            right = float('inf')
+            if(col+1<len(triangle[row + 1])):
+                right=triangle[row][col]+helper(row+1,col+1)
+            dp[row][col]=min(left,right)
+            return dp[row][col]
+        return helper(0,0)
