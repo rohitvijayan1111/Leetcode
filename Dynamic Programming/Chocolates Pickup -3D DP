@@ -1,0 +1,56 @@
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+# } Driver Code Ends
+#User function Template for python3
+
+class Solution:
+    def solve(self, n, m, grid):
+        # Code here
+        dp = [[[-1 for _ in range(m)] for _ in range(m)] for _ in range(n)]
+        def get_max_chocolates(i, j1, j2):
+            # Boundary conditions
+            if j1 < 0 or j1 >= m or j2 < 0 or j2 >= m:
+                return -float('inf')
+            
+            # Base case: last row
+            if i == n - 1:
+                if j1 == j2:
+                    return grid[i][j1]
+                else:
+                    return grid[i][j1] + grid[i][j2]
+            
+            # If already computed, return the stored value
+            if dp[i][j1][j2] != -1:
+                return dp[i][j1][j2]
+            
+            # Initialize maximum chocolates to -inf
+            max_chocolates = -float('inf')
+            
+            # Move the robots in all possible directions
+            for dj1 in [-1, 0, 1]:
+                for dj2 in [-1, 0, 1]:
+                    if j1 == j2:
+                        chocolates = grid[i][j1] + get_max_chocolates(i + 1, j1 + dj1, j2 + dj2)
+                    else:
+                        chocolates = grid[i][j1] + grid[i][j2] + get_max_chocolates(i + 1, j1 + dj1, j2 + dj2)
+                    max_chocolates = max(max_chocolates, chocolates)
+            
+            # Store the result in DP array
+            dp[i][j1][j2] = max_chocolates
+            return dp[i][j1][j2]
+        return get_max_chocolates(0, 0, m - 1)
+                        
+
+#{ 
+ # Driver Code Starts.
+if __name__ == '__main__': 
+    t = int(input ())
+    for _ in range (t):
+        n, m = list(map(int, input().split()))
+        grid = [list(map(int, input().split())) for _ in range(n)]
+        obj = Solution()
+        res = obj.solve(n, m, grid)
+        print(res)
+# } Driver Code Ends
