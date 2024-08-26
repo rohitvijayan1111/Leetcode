@@ -1,0 +1,25 @@
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        sums=sum(nums)
+        if(sums%2!=0):
+            return False
+        target=sums//2
+        dp=[[-1 for _ in range(target+1)] for _ in range(len(nums)+1) ]
+        def helper(i,target):
+            if(i==0):
+                if(nums[i]==target):
+                    return True
+                return False
+            if(target==0):
+                return True
+            if(dp[i][target]!=-1):
+                return dp[i][target]
+            #not taken
+            nottaken=helper(i-1,target)
+            #taken
+            taken=False
+            if(target>=nums[i]):
+                taken=helper(i-1,target-nums[i])
+            dp[i][target]=nottaken or taken
+            return dp[i][target]
+        return helper(len(nums)-1,target)
