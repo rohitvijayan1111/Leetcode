@@ -1,0 +1,37 @@
+from typing import List
+import collections
+import heapq
+
+class Solution:
+    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:
+        # Initialize adjacency list
+        adj = collections.defaultdict(list)
+        for i in range(len(edges)):
+            src, dst = edges[i]
+            adj[src].append((dst, succProb[i]))
+            adj[dst].append((src, succProb[i]))
+
+        # Priority queue to maximize probability
+        pq = [(-1.0, start_node)]  # Use negative probability for max heap
+        visited = set()  # To keep track of visited nodes
+
+        while pq:
+            prob, cur = heapq.heappop(pq)
+            prob *= -1  # Convert back to positive
+
+            # If we reached the end node, return the probability
+            if cur == end_node:
+                return prob
+            
+            # Mark current node as visited
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            # Explore neighbors
+            for nei, edgeProb in adj[cur]:
+                if nei not in visited:
+                    heapq.heappush(pq, (-(prob * edgeProb), nei))
+
+        # If the end node was never reached
+        return 0.0
