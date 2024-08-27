@@ -1,0 +1,33 @@
+class Solution:
+    def findMaxDiff(self, arr):
+        # code here
+        left=[0]*len(arr)
+        right=[0]*len(arr)
+        s=[]
+        for i in range(len(arr)):
+            while(s and s[-1]>=arr[i]):
+                s.pop()
+            if(s):
+                left[i]=s[-1]
+            s.append(arr[i])
+        s=[]
+        for i in range(len(arr)-1,-1,-1):
+            while(s and s[-1]>=arr[i]):
+                s.pop()
+            if(s):
+                right[i]=s[-1]
+            s.append(arr[i])
+        diff=[abs(left[i]-right[i]) for i in range(len(arr))]
+        return max(diff)
+
+
+#{ 
+ # Driver Code Starts
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        arr = list(map(int, input().split()))
+        ob = Solution()
+        print(ob.findMaxDiff(arr))
+
+# } Driver Code Ends
