@@ -1,0 +1,41 @@
+from collections import defaultdict, deque
+
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int:
+        if not stones:
+            return 0
+        
+        row_map = defaultdict(list)
+        col_map = defaultdict(list)
+        
+        # Build adjacency lists
+        for i, (x, y) in enumerate(stones):
+            row_map[x].append(i)
+            col_map[y].append(i)
+        
+        def dfs(index):
+            stack = [index]
+            while stack:
+                node = stack.pop()
+                if node not in visited:
+                    visited.add(node)
+                    x, y = stones[node]
+                    # Add all stones in the same row and column to the stack
+                    for neighbor in row_map[x]:
+                        if neighbor not in visited:
+                            stack.append(neighbor)
+                    for neighbor in col_map[y]:
+                        if neighbor not in visited:
+                            stack.append(neighbor)
+
+        visited = set()
+        num_components = 0
+        
+        # Count connected components
+        for i in range(len(stones)):
+            if i not in visited:
+                dfs(i)
+                num_components += 1
+        
+        # Maximum stones that can be removed
+        return len(stones) - num_components
