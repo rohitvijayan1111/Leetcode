@@ -1,0 +1,47 @@
+#User function Template for python3
+
+class Solution:
+    def nQueen(self, n):
+        # code here
+        ans=[]
+        def isSafe(board,row,col):
+            for i in range(row): 
+                if board[i] == col or board[i] - i == col - row or board[i] + i == col + row:
+                    return False
+            return True
+            
+        def helper(i,l):
+            if(i==n):
+                ans.append([x + 1 for x in l])
+            for j in range(n):
+                if(isSafe(l,i,j)):
+                    l[i]=j
+                    helper(i+1,l)
+                    l[i]=-1
+             
+        helper(0,[-1]*n)
+        return ans
+ 
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        
+        ob = Solution()
+        ans = ob.nQueen(n)
+        if(len(ans) == 0):
+            print("-1")
+        else:
+            for i in range(len(ans)):
+                print("[",end="")
+                for j in range(len(ans[i])):
+                    print(ans[i][j],end = " ")
+                print("]",end = " ")
+            print()
+                
+# } Driver Code Ends
