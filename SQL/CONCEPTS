@@ -1,5 +1,14 @@
 LEARN ABOUT JOINS:
 CONCEPTS ON DATE
-
+DATE_COLUMN + INTERVAL N UNIT
+count(case when c.action="confirmed" THEN 1 END)/count(*),2),0)
+HAVING CLAUSE
 COALESCE
 LENGTH
+
+
+SELECT r.contest_id, 
+       ROUND(COUNT(DISTINCT r.user_id) / (SELECT COUNT(*) FROM Users) * 100, 2) AS percentage
+FROM Register r
+GROUP BY r.contest_id
+ORDER BY percentage DESC, r.contest_id ASC;
