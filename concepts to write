@@ -1,2 +1,200 @@
 1)dp on subsequences
 2)meet in the middle
+
+
+JAVA
+
+1. Heap (Priority Queue)
+A heap is a specialized tree-based data structure that satisfies the heap property. In Java, the PriorityQueue class is used to implement heaps (min-heap or max-heap). A heap is commonly used for scenarios that require quick access to the smallest or largest element, such as in algorithms like Dijkstra's or Huffman coding.
+
+Characteristics:
+Time Complexity:
+Insertion: O(log n)
+Removal: O(log n)
+Peek (retrieve the minimum/maximum): O(1)
+
+Java Implementation (Min-Heap):
+PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+For Max-Heap:
+To create a Max-Heap, you can provide a custom comparator:
+
+java
+Copy code
+PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+
+
+Subarray problems on LeetCode can be challenging but share some common techniques and tricks that make them more manageable. Here are some key strategies and tricks to solve subarray problems effectively:
+
+1. Sliding Window Technique
+Use Case: Useful for finding subarrays that meet a certain condition (e.g., subarrays with a sum less than a target, longest/shortest subarrays, etc.).
+How It Works: Maintain a window of elements and expand/contract it dynamically to maintain the subarray condition.
+Common Problems:
+Longest Substring Without Repeating Characters
+Minimum Size Subarray Sum
+Max Consecutive Ones
+Key Idea:
+
+Expand the window by moving the right pointer until the condition is violated.
+Shrink the window by moving the left pointer until the condition is satisfied again.
+python
+Copy code
+# Example: Find the smallest subarray sum >= target
+def minSubArrayLen(target, nums):
+    left = 0
+    total = 0
+    min_length = float('inf')
+    for right in range(len(nums)):
+        total += nums[right]
+        while total >= target:
+            min_length = min(min_length, right - left + 1)
+            total -= nums[left]
+            left += 1
+    return min_length if min_length != float('inf') else 0
+2. Prefix Sum Technique
+Use Case: This is effective for problems involving sums of subarrays.
+How It Works: Precompute the cumulative sums up to each index, allowing you to quickly calculate the sum of any subarray by subtracting two prefix sums.
+Common Problems:
+Subarray Sum Equals K
+Maximum Size Subarray Sum Equals k
+Key Idea:
+
+Maintain a running total (prefix sum) and use it to check subarray sums using a hashmap for O(1) lookup.
+python
+Copy code
+# Example: Subarray Sum Equals K
+def subarraySum(nums, k):
+    prefix_sum = 0
+    sum_count = {0: 1}  # sum of 0 occurs once
+    count = 0
+    for num in nums:
+        prefix_sum += num
+        count += sum_count.get(prefix_sum - k, 0)
+        sum_count[prefix_sum] = sum_count.get(prefix_sum, 0) + 1
+    return count
+3. Kadane’s Algorithm
+Use Case: Finding the maximum sum subarray.
+How It Works: Iteratively decide whether to include the current element in the existing subarray or start a new subarray. This works in O(n) time.
+Common Problems:
+Maximum Subarray (Leetcode 53)
+Maximum Product Subarray (with a slight variation)
+Key Idea:
+
+Maintain a running maximum and reset when the subarray becomes negative.
+python
+Copy code
+# Example: Maximum Subarray
+def maxSubArray(nums):
+    max_current = max_global = nums[0]
+    for num in nums[1:]:
+        max_current = max(num, max_current + num)
+        max_global = max(max_global, max_current)
+    return max_global
+4. Two-Pointer Technique
+Use Case: Works for sorted arrays or when the subarray needs to satisfy specific conditions (e.g., product or sum).
+How It Works: Use two pointers that scan the array from both ends or adjust dynamically based on conditions.
+Common Problems:
+Subarray Product Less Than K
+Continuous Subarray Sum
+Key Idea:
+
+Adjust two pointers (left and right) based on conditions and keep track of valid subarrays in between them.
+python
+Copy code
+# Example: Subarray Product Less Than K
+def numSubarrayProductLessThanK(nums, k):
+    if k <= 1: return 0
+    product = 1
+    count = 0
+    left = 0
+    for right in range(len(nums)):
+        product *= nums[right]
+        while product >= k:
+            product //= nums[left]
+            left += 1
+        count += right - left + 1
+    return count
+5. Monotonic Queue / Deque
+Use Case: For problems involving the minimum or maximum of subarrays/sliding windows.
+How It Works: Maintain a deque that helps track the minimum/maximum values over a sliding window in O(n) time.
+Common Problems:
+Sliding Window Maximum
+Shortest Subarray with Sum at Least K
+Key Idea:
+
+A deque stores the indices of useful elements, ensuring the current window has the minimum or maximum efficiently.
+python
+Copy code
+# Example: Sliding Window Maximum
+from collections import deque
+def maxSlidingWindow(nums, k):
+    dq = deque()
+    result = []
+    for i in range(len(nums)):
+        if dq and dq[0] < i - k + 1:
+            dq.popleft()
+        while dq and nums[dq[-1]] < nums[i]:
+            dq.pop()
+        dq.append(i)
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+    return result
+6. Dynamic Programming (DP)
+Use Case: Sometimes subarray problems require breaking the problem down into smaller subproblems.
+How It Works: Create a DP array where each index represents the best solution to the subarray problem up to that index.
+Common Problems:
+Maximum Sum of 3 Non-Overlapping Subarrays
+Largest Sum of Averages
+Key Idea:
+
+Build a DP table to store intermediate results, solving for the optimal subarray at each step.
+python
+Copy code
+# Example: Maximum Sum of 3 Non-Overlapping Subarrays
+def maxSumOfThreeSubarrays(nums, k):
+    sum_k = [0] * (len(nums) - k + 1)
+    sum_k[0] = sum(nums[:k])
+    for i in range(1, len(nums) - k + 1):
+        sum_k[i] = sum_k[i - 1] - nums[i - 1] + nums[i + k - 1]
+    left_max = [0] * len(sum_k)
+    right_max = [0] * len(sum_k)
+    for i in range(1, len(sum_k)):
+        left_max[i] = max(left_max[i - 1], sum_k[i])
+    for i in range(len(sum_k) - 2, -1, -1):
+        right_max[i] = max(right_max[i + 1], sum_k[i])
+    max_sum = 0
+    for i in range(k, len(sum_k) - k):
+        max_sum = max(max_sum, left_max[i - k] + sum_k[i] + right_max[i + k])
+    return max_sum
+7. Binary Search (for Cumulative Sums)
+Use Case: Sometimes binary search can be applied on prefix sums or other sorted values to speed up finding a target sum.
+Common Problems:
+Maximum Subarray Sum Less Than K
+Key Idea:
+
+Use binary search to locate where a valid subarray starts or ends based on constraints.
+python
+Copy code
+# Example: Maximum Subarray Sum Less Than K
+import bisect
+def maxSumSubarrayLessThanK(nums, k):
+    prefix = 0
+    prefix_set = [0]
+    max_sum = float('-inf')
+    for num in nums:
+        prefix += num
+        idx = bisect.bisect_left(prefix_set, prefix - k)
+        if idx < len(prefix_set):
+            max_sum = max(max_sum, prefix - prefix_set[idx])
+        bisect.insort(prefix_set, prefix)
+    return max_sum
+Summary of Techniques:
+Sliding Window: Dynamic window expansion for subarrays.
+Prefix Sum: Efficient subarray sum calculation.
+Kadane’s Algorithm: Dynamic programming for maximum sum subarrays.
+Two-Pointer: Efficient subarray processing.
+Monotonic Queue: For problems involving minimum/maximum in a sliding window.
+DP: Breaking the problem into smaller subproblems.
+Binary Search: Use with sorted values for optimized subarray detection.
+By mastering these techniques, you'll be well-equipped to solve a variety of subarray problems on LeetCode!
