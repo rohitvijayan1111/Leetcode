@@ -198,3 +198,18 @@ Monotonic Queue: For problems involving minimum/maximum in a sliding window.
 DP: Breaking the problem into smaller subproblems.
 Binary Search: Use with sorted values for optimized subarray detection.
 By mastering these techniques, you'll be well-equipped to solve a variety of subarray problems on LeetCode!
+
+
+
+class Solution:
+    def largestCombination(self, candidates: List[int]) -> int:
+        bit_counts = [0] * 24
+    
+        # Count the number of numbers that have each bit position set to 1
+        for num in candidates:
+            for i in range(24):
+                if num & (1 << i):  # Check if the i-th bit is set
+                    bit_counts[i] += 1
+        
+        # The answer is the maximum count in bit_counts
+        return max(bit_counts)
