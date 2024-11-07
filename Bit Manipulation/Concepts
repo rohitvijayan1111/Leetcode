@@ -1,0 +1,6 @@
+bin-> Integer.toBinaryString(number);
+
+to check if i th bit is set:
+
+1<i & no
+
